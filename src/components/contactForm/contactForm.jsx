@@ -1,10 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-//import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './contactsForm.module.css';
-//import { addContact } from 'redux/contactsSlice';
-//import { getContacts } from 'redux/selectors';
 import { useGetContactsQuery, useAddContactMutation } from 'service/API';
 
 export const ContactForm = () => {

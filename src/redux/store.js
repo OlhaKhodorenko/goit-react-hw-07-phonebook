@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-//import logger from 'redux-logger';
 import { filter } from 'redux/redusers';
 import { contactsApi } from 'service/API';
 
@@ -9,5 +8,4 @@ export const store = configureStore({
     ...getDefaultMiddleware(),
     contactsApi.middleware,
   ],
-  //logger,
 });
