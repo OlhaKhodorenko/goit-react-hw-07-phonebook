@@ -3,7 +3,7 @@ import css from './contactList.module.css';
 
 export const ContactItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
-  console.log(id);
+
   return (
     <>
       <span className={css.marker}></span>

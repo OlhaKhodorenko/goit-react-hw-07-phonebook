@@ -4,7 +4,7 @@ import { filter } from 'redux/redusers';
 import { contactsApi } from 'service/API';
 
 export const store = configureStore({
-  reducer: { filter, [contactsApi.reducerPath]: contactsApi.reducer },
+  reducer: { [contactsApi.reducerPath]: contactsApi.reducer, filter },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
     contactsApi.middleware,

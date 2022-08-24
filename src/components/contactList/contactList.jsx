@@ -1,19 +1,16 @@
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './contactList.module.css';
 import { useGetContactsQuery } from 'service/API';
 import { ContactItem } from './contactItem';
-//import { getFilter } from 'redux/selectors';
 
 const ContactList = () => {
-  //const filter = useSelector(getFilter);
+  const filter = useSelector(state => state.filter);
   const { data: contacts, error, isLoading } = useGetContactsQuery();
 
-  console.log(contacts);
-
-  // const filteredContacts =
-  //   contacts &&
-  //   contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+  const filteredContacts =
+    contacts &&
+    contacts.filter(contact => contact.name.toLowerCase().includes(filter));
 
   return (
     <div>
@@ -22,7 +19,7 @@ const ContactList = () => {
         <b>Loading...</b>
       ) : (
         <ul className={css.contactsList}>
-          {contacts.map(({ id, name, number }) => (
+          {filteredContacts.map(({ id, name, number }) => (
             <li key={id} className={css.listItem}>
               <ContactItem id={id} name={name} number={number} />
             </li>

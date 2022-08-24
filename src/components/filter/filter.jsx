@@ -5,8 +5,8 @@ import { changeFilter } from 'redux/actions';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
-
+  const filter = useSelector(state => state.filter);
+  console.log(filter);
   return (
     <label>
       <h3>Find contacts by name</h3>
