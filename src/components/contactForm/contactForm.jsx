@@ -13,7 +13,6 @@ export const ContactForm = () => {
   const loginInputId = nanoid();
 
   const onSubmit = e => {
-    console.log(e);
     e.preventDefault();
     const includedСontact = contacts.find(contact => contact.name === name);
     if (includedСontact) {
