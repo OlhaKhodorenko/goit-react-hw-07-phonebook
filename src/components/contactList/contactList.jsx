@@ -1,15 +1,15 @@
 //import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './contactList.module.css';
-import { useDeleteContactMutation, useGetContactsQuery } from 'service/API';
+import { useGetContactsQuery } from 'service/API';
+import { ContactItem } from './contactItem';
 //import { getFilter } from 'redux/selectors';
 
 const ContactList = () => {
   //const filter = useSelector(getFilter);
   const { data: contacts, error, isLoading } = useGetContactsQuery();
-  const [deleteContact] = useDeleteContactMutation();
 
-  console.log(useGetContactsQuery());
+  console.log(contacts);
 
   // const filteredContacts =
   //   contacts &&
@@ -24,16 +24,7 @@ const ContactList = () => {
         <ul className={css.contactsList}>
           {contacts.map(({ id, name, number }) => (
             <li key={id} className={css.listItem}>
-              <span className={css.marker}></span>
-              <p className={css.itemName}>
-                {name}: {number}
-              </p>
-              <button
-                className={css.removeBtn}
-                onClick={() => deleteContact(id)}
-              >
-                remove
-              </button>
+              <ContactItem id={id} name={name} number={number} />
             </li>
           ))}
         </ul>

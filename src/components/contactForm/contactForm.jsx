@@ -1,17 +1,17 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import css from './contactsForm.module.css';
-import { addContact } from 'redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
+//import { addContact } from 'redux/contactsSlice';
+//import { getContacts } from 'redux/selectors';
+import { useGetContactsQuery, useAddContactMutation } from 'service/API';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-
-  const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const { data: contacts } = useGetContactsQuery();
+  const [addContact] = useAddContactMutation();
 
   const loginInputId = nanoid();
 
@@ -23,13 +23,12 @@ export const ContactForm = () => {
       alert(name + 'is already in contacts.');
       return;
     }
-    dispatch(
-      addContact({
-        id: nanoid(),
-        name,
-        number,
-      })
-    );
+    const id = nanoid();
+    addContact({
+      id,
+      name,
+      number,
+    });
     reset();
   };
 

@@ -1,18 +1,18 @@
 import { useDeleteContactMutation } from 'service/API';
 import css from './contactList.module.css';
 
-export const ContactItem = ({ item }) => {
+export const ContactItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
-
+  console.log(id);
   return (
     <>
       <span className={css.marker}></span>
       <p className={css.itemName}>
-        {item.name}: {item.number}
+        {name}: {number}
       </p>
       <button
         className={css.removeBtn}
-        onClick={() => deleteContact(item.id)}
+        onClick={() => deleteContact(id)}
         disabled={isLoading}
       >
         remove
