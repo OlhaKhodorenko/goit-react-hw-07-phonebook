@@ -19,9 +19,9 @@ export const ContactForm = () => {
       alert(name + 'is already in contacts.');
       return;
     }
-    const id = nanoid();
+
     addContact({
-      id,
+      id: nanoid(),
       name,
       number,
     });

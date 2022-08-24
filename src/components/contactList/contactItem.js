@@ -8,7 +8,7 @@ export const ContactItem = ({ id, name, number }) => {
     <>
       <span className={css.marker}></span>
       <p className={css.itemName}>
-        {name}: {number}
+        {name}:{number}
       </p>
       <button
         className={css.removeBtn}
