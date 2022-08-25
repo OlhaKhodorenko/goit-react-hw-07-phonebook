@@ -14,7 +14,7 @@ export const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const includedСontact = contacts.find(contact => contact.name === name);
+    const includedСontact = contacts.find(contact => contact.name.toLowerCase() === name);
     if (includedСontact) {
       alert(name + 'is already in contacts.');
       return;
